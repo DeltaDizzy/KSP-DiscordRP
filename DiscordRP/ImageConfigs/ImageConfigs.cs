@@ -7,14 +7,36 @@ namespace DiscordRP
     {
         UrlDir.UrlConfig[] rootNodes;
         UrlDir.UrlConfig[] imageNodes;
+        public static string _planetName;
+        public static string _imagePath;
+        public static string _configstate;
+        public static string finalState;
+        public enum PrescenceStates {BuildingState, EscapingState, FlyingState, IdlingState, LandedState, OrbitingState, SplashedState};
         
-        public void GetConfigs()
+        public void GetThumbs()
         {
-            rootNodes = GameDatabase.Instance.root.GetConfigs("DISCORD_RP");
-            foreach(UrlDir.UrlConfig cfg in rootNodes)
+            foreach(UrlDir.UrlConfig UrlConfig in GameDatabase.Instance.root.GetConfigs("DISCORD_RP"))
             {
-                imageNodes = GameDatabase.Instance.root.GetConfigs()
+                foreach(ConfigNode node in UrlConfig.config.GetNodes("THUMBNAIL"))
+                {
+                    _planetName = node.GetValue("planetName");
+                    _imagePath = node.GetValue("imagePath");
+                    _configState = node.GetValue("state");
+                }
             }
+            
         }
+        
+    }
+}
+
+
+DISCORD_RP
+{
+    THUMBNAIL
+    {
+        planetName = 
+        image = 
+        state = 
     }
 }
