@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 using UnityEngine;
 
 namespace DiscordRP
@@ -7,11 +7,21 @@ namespace DiscordRP
     {
         UrlDir.UrlConfig[] rootNodes;
         UrlDir.UrlConfig[] imageNodes;
+        string ThumbDirectory = KSPUtil.ApplicationRootPath.Replace("\\", "/") + "GameData/";
         public static string _planetName;
         public static string _imagePath;
-        public static string _configstate;
+        public static string _configState;
         public static string finalState;
-        public enum PrescenceStates {BuildingState, EscapingState, FlyingState, IdlingState, LandedState, OrbitingState, SplashedState};
+        public enum PrescenceStates
+        {
+            BuildingState = 0,
+            EscapingState = 1,
+            FlyingState = 2,
+            IdlingState = 3,
+            LandedState = 4,
+            OrbitingState = 5,
+            SplashedState = 6
+        };
         
         public void GetThumbs()
         {
@@ -24,19 +34,8 @@ namespace DiscordRP
                     _configState = node.GetValue("state");
                 }
             }
-            
+            ThumbDirectory = ThumbDirectory + _imagePath;
         }
         
-    }
-}
-
-
-DISCORD_RP
-{
-    THUMBNAIL
-    {
-        planetName = 
-        image = 
-        state = 
     }
 }
