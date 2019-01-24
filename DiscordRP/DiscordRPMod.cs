@@ -21,7 +21,7 @@ namespace DiscordRP
         void Awake()
         {
             lastUpdate = Time.time;
-            state = new IdlingState(Utils.GetEpochTime(), GameScenes.LOADING);
+            state = new LoadingState(Utils.GetEpochTime(), GameScenes.LOADING);
         }
 
         void Start()
@@ -51,7 +51,7 @@ namespace DiscordRP
 
         void OnDisable()
         {
-            Debug.Log("DiscordRP: Plugin disable");
+            Debug.Log("DiscordRP: Plugin disabled");
             presenceController.Disable();
 
             initialized = false;
